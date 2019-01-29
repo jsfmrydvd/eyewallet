@@ -1,0 +1,40 @@
+:root {
+     --ion-font-family: sans-serif;
+}
+    ion-content {
+        // background-image: url("../../assets/imgs/bg-5.jpg");
+        // height: 100vh;
+        // background-repeat: no-repeat;
+        // background-size: cover;
+        // background-position: center;
+        // // padding-bottom: 50px;
+        // background-attachment: fixed;
+        // position: relative;
+        --background: #f9f9f9;
+        ion-list {
+            position: relative;
+            top: 20vh;
+            --background: white;
+            border-radius: 5px;
+            --color: black;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+            // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
+            ion-item {
+                border-radius: 5px;
+                ion-input {
+                    text-align: center;
+                }
+
+            }
+
+        }
+        .button-input {
+            position: relative;
+            top: 25vh;
+            --background: rgba(173, 63, 63, 0.9);
+            --ion-color: white;
+            font-weight: lighter;
+            display: block;
+
+        }
+    }

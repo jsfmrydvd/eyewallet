@@ -1,5 +1,7 @@
 {
   "name": "EYEWALLET",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
