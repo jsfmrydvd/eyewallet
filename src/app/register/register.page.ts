@@ -43,7 +43,6 @@ export class RegisterPage implements OnInit {
       }).catch((err) => {
           // alert(err);
       });
-      debugger;
       if(this.username.value != "" && this.number.value != "" &&
       this.cpusername.value != "" && this.cpnumber.value != "") {
           const alert = await this.alertController.create({

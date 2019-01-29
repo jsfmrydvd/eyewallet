@@ -10,17 +10,18 @@
         // // padding-bottom: 50px;
         // background-attachment: fixed;
         // position: relative;
-        --background: #f9f9f9;
+        --background: #e9ebee;
         ion-list {
             position: relative;
             top: 20vh;
-            --background: white;
+            background: #f5f6f7;
             border-radius: 5px;
             --color: black;
             box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
             // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
             ion-item {
                 border-radius: 5px;
+                --background: #f5f6f7;
                 ion-input {
                     text-align: center;
                 }
@@ -37,4 +38,11 @@
             display: block;
 
         }
+    }
+    ion-toolbar {
+        --background: #f5f6f7;
+        --color: black;
+        text-align: center;
+        border-radius: 2px 2px 0 0;
+        border-bottom: 1px solid #dddfe2;
     }

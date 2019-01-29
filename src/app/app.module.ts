@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for bluetooth serial
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';//for permissions
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
     BluetoothSerial,
     AndroidPermissions,
     NativeStorage,
+    Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

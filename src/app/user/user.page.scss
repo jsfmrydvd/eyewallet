@@ -1,6 +1,3 @@
-.title {
-    text-align: center;
-}
 ion-toolbar {
     --background: #f5f6f7;
     --color: black;
@@ -9,7 +6,18 @@ ion-toolbar {
 }
 ion-content {
     --background: #e9ebee;
+}
+.button-input-back {
+    --background: transparent;
+    margin-left: -20px;
+    --color: #40686B;
     &:hover {
         --background: transparent;
     }
 }
+.arrow-size {
+    font-size: 30px;
+    --color: #40686B;
+}
+// #e9ebee #f5f6f7 1px solid #dddfe2
+//bradius 2px 2px 0 0
