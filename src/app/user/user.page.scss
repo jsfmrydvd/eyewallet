@@ -7,9 +7,13 @@ ion-toolbar {
 ion-content {
     --background: #e9ebee;
 }
+ion-button{
+  --box-shadow:none;
+}
 .button-input-back {
     --background: transparent;
-    margin-left: -20px;
+    // margin-left: -20px;
+    box-shadow: none;
     --color: #40686B;
     &:hover {
         --background: transparent;
@@ -25,7 +29,7 @@ ion-content {
    }
 }
 .arrow-size {
-    font-size: 30px;
+    // font-size: 20px;
     --color: #40686B;
 }
 .user-icon {

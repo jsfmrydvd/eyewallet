@@ -36,8 +36,8 @@ constructor(private bluetoothSerial: BluetoothSerial,
         //         alert(device.id + device.name);
         //     });
         // });
-        this.bluetoothSerial.enable().then(() => {
-            alert('bluetooth enabled!');
+        // this.bluetoothSerial.enable().then(() => {
+        //     alert('bluetooth enabled!');
             // if(this.nativeStorage.keys() == null) {
             //     this.router.navigate(['/register'])
             // } else {
@@ -48,9 +48,9 @@ constructor(private bluetoothSerial: BluetoothSerial,
             //     });
             // }
             this.router.navigate(['/register'])
-        }).catch((err) => {
-            alert(JSON.stringify(err));
-        })
+        // }).catch((err) => {
+        //     alert(JSON.stringify(err));
+        // })
     }
 
 }

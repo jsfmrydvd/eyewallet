@@ -4,13 +4,25 @@ ion-toolbar {
     border-radius: 2px 2px 0 0;
     border-bottom: 1px solid #dddfe2;
 }
+ion-button {
+    --box-shadow: none;
+}
+.title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
 ion-content {
     --background: #e9ebee;
 }
 .button-input-back {
     --background: transparent;
-    margin-left: -20px;
-    --color: red;
+    position: relative;
+    // left: 0px;
+    z-index: 1;
+    --color: #40686B;
     &:hover {
         --background: transparent;
     }
@@ -19,7 +31,7 @@ ion-content {
    --background: transparent;
       position: absolute;
       right: 0px;
-   --color: red;
+   --color: #40686B;
    &:hover {
        --background: transparent;
    }
@@ -35,6 +47,7 @@ ion-content {
 }
 h4 {
     text-align: center;
+    color: black;
 }
 ion-list {
     position: relative;

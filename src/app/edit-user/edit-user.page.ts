@@ -24,46 +24,46 @@ export class EditUserPage implements OnInit {
       this.router.navigate(['/user'])
   }
   async saveUser() {
-       this.nativeStorage.setItem('username', this.username.value).then(() => {
-           console.log('Stored item!' + this.username.value)
-       }).catch((err) => {
-           // alert(JSON.stringify(err));
-       });
-       this.nativeStorage.setItem('number', this.number.value).then(() => {
-           console.log('Stored item!' + this.number.value)
-       }).catch((err) => {
-           // alert(JSON.stringify(err));
-       });
-       this.nativeStorage.setItem('cpusername',  this.cpusername.value).then(() => {
-           console.log('Stored item!' + this. cpusername.value)
-       }).catch((err) => {
-           // alert(err);
-       });
-       this.nativeStorage.setItem('cpnumber',  this.cpnumber.value).then(() => {
-           console.log('Stored item!' + this.cpnumber.value)
-       }).catch((err) => {
-           // alert(err);
-       });
-       if(this.username.value != "" && this.number.value != "" &&
-       this.cpusername.value != "" && this.cpnumber.value != "") {
-           const alert = await this.alertController.create({
-                header: 'Success',
-                // subHeader: 'Subtitle',
-                message: 'Details updated.',
-                buttons: ['OK']
-
-              });
-              await alert.present();
-              this.router.navigate(['/user'])
-       } else {
-           const alert = await this.alertController.create({
-                header: 'Error',
-                // subHeader: 'Subtitle',
-                message: 'Please fill out the empty fields.',
-                buttons: ['OK']
-              });
-              await alert.present();
-       }
+       // this.nativeStorage.setItem('username', this.username.value).then(() => {
+       //     console.log('Stored item!' + this.username.value)
+       // }).catch((err) => {
+       //     // alert(JSON.stringify(err));
+       // });
+       // this.nativeStorage.setItem('number', this.number.value).then(() => {
+       //     console.log('Stored item!' + this.number.value)
+       // }).catch((err) => {
+       //     // alert(JSON.stringify(err));
+       // });
+       // this.nativeStorage.setItem('cpusername',  this.cpusername.value).then(() => {
+       //     console.log('Stored item!' + this. cpusername.value)
+       // }).catch((err) => {
+       //     // alert(err);
+       // });
+       // this.nativeStorage.setItem('cpnumber',  this.cpnumber.value).then(() => {
+       //     console.log('Stored item!' + this.cpnumber.value)
+       // }).catch((err) => {
+       //     // alert(err);
+       // });
+       // if(this.username.value != "" && this.number.value != "" &&
+       // this.cpusername.value != "" && this.cpnumber.value != "") {
+       //     const alert = await this.alertController.create({
+       //          header: 'Success',
+       //          // subHeader: 'Subtitle',
+       //          message: 'Details updated.',
+       //          buttons: ['OK']
+       //
+       //        });
+       //        await alert.present();
+              this.router.navigate(['/main'])
+       // } else {
+       //     const alert = await this.alertController.create({
+       //          header: 'Error',
+       //          // subHeader: 'Subtitle',
+       //          message: 'Please fill out the empty fields.',
+       //          buttons: ['OK']
+       //        });
+       //        await alert.present();
+       // }
 
    }
 }
