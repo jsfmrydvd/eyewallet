@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button class="button-input-back" (click)="goBack()"><ion-icon name="arrow-back" class="arrow-size"></ion-icon>Cancel</ion-button>
+    <ion-button align-items-end class="button-input-save" (click)="saveUser()">Save</ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div padding>
+        <ion-icon name="contact" class="user-icon"></ion-icon>
+            <h4>{{username}}</h4>
+    </div>
+<ion-list>
+    <ion-item>
+        <ion-label position="fixed">Username</ion-label>
+        <ion-input type="text" #username></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="fixed">Phone Number</ion-label>
+        <ion-input type="number" #number></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="fixed">Contact Person</ion-label>
+        <ion-input type="text" #cpusername></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="fixed">Contact Phone Number</ion-label>
+        <ion-input type="number" #cpnumber></ion-input>
+    </ion-item>
+</ion-list>
+<!-- <ion-button class="button-input" (click)="getData()">Create Account</ion-button> -->
+
+</ion-content>

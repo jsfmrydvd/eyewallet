@@ -19,26 +19,26 @@ export class UserPage implements OnInit {
 
   ngOnInit() {
       console.log("user page loaded!");
-      // this.nativeStorage.getItem('username').then((data) => {
-      //     this.username = data;
-      //     this.nativeStorage.getItem('number').then((num) => {
-      //         this.number = num;
-      //         this.nativeStorage.getItem('cpusername').then((cpuname) => {
-      //             this.cpusername = cpuname;
-      //             this.nativeStorage.getItem('cpnumber').then((cpnum) => {
-      //                 this.cpnumber = cpnum;
-      //             }).catch((err) => {
-      //                 alert(JSON.stringify(err));
-      //             })
-      //         }).catch((err) => {
-      //             alert(JSON.stringify(err));
-      //         });
-      //     }).catch((err) => {
-      //         alert(JSON.stringify(err));
-      //     });
-      // }).catch((err) => {
-      //     alert(err);
-      // });
+      this.nativeStorage.getItem('username').then((data) => {
+          this.username = data;
+          this.nativeStorage.getItem('number').then((num) => {
+              this.number = num;
+              this.nativeStorage.getItem('cpusername').then((cpuname) => {
+                  this.cpusername = cpuname;
+                  this.nativeStorage.getItem('cpnumber').then((cpnum) => {
+                      this.cpnumber = cpnum;
+                  }).catch((err) => {
+                      alert(JSON.stringify(err));
+                  })
+              }).catch((err) => {
+                  alert(JSON.stringify(err));
+              });
+          }).catch((err) => {
+              alert(JSON.stringify(err));
+          });
+      }).catch((err) => {
+          alert(err);
+      });
   }
   getData() {
       this.nativeStorage.getItem('username').then((data) => {
@@ -49,7 +49,9 @@ export class UserPage implements OnInit {
   }
   goBack() {
       this.router.navigate(['/main'])
-
   }
- 
+  editUser() {
+       this.router.navigate(['/edit-user'])
+  }
+
 }

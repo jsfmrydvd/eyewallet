@@ -10,16 +10,16 @@ ion-content {
 .button-input-back {
     --background: transparent;
     margin-left: -20px;
-    --color: #40686B;
+    --color: red;
     &:hover {
         --background: transparent;
     }
 }
-.button-input-edit {
+.button-input-save {
    --background: transparent;
       position: absolute;
       right: 0px;
-   --color: #40686B;
+   --color: red;
    &:hover {
        --background: transparent;
    }

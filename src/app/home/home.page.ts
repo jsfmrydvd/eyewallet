@@ -38,15 +38,16 @@ constructor(private bluetoothSerial: BluetoothSerial,
         // });
         this.bluetoothSerial.enable().then(() => {
             alert('bluetooth enabled!');
-            if(this.nativeStorage.keys() == null) {
-                this.router.navigate(['/register'])
-            } else {
-                this.router.navigate(['/main'])
-                console.log('Success' + this.nativeStorage.keys());
-                this.nativeStorage.keys().then((data) => {
-                    console.log(data);
-                });
-            }
+            // if(this.nativeStorage.keys() == null) {
+            //     this.router.navigate(['/register'])
+            // } else {
+            //     this.router.navigate(['/main'])
+            //     console.log('Success' + this.nativeStorage.keys());
+            //     this.nativeStorage.keys().then((data) => {
+            //         console.log(data);
+            //     });
+            // }
+            this.router.navigate(['/register'])
         }).catch((err) => {
             alert(JSON.stringify(err));
         })
