@@ -1,13 +1,11 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>Register</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 <ion-content padding>
-    <div padding class="list-content">
-
-
-    <ion-list>
+    <!-- <div padding class="list-content"> -->
+    <!-- <ion-list>
         <ion-item>
             <ion-label position="floating">Username</ion-label>
             <ion-input type="text" #username></ion-input>
@@ -24,9 +22,40 @@
             <ion-label position="floating">Phone Number</ion-label>
             <ion-input type="number" #cpnumber></ion-input>
         </ion-item>
-    </ion-list>
-    </div>
-    <div padding>
+    </ion-list> -->
+    <!-- </div> -->
+    <ion-card>
+      <ion-card-header class="card-bg">
+        <ion-card-title class="title-name">Register</ion-card-title>
+        <p class="lines"></p>
+        <ion-card-subtitle class="subtitle-name">Please fill out all the fields</ion-card-subtitle>
+        <!-- <ion-button (click)="getAllMac()">Connect to Bluetooth</ion-button> -->
+      </ion-card-header>
+      <!-- <ion-item> -->
+          <ion-list>
+              <ion-item>
+                  <ion-label position="floating">Username</ion-label>
+                  <ion-input type="text" #username></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="floating">Phone Number</ion-label>
+                  <ion-input type="number" #number></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="floating">Contact Person</ion-label>
+                  <ion-input type="text" #cpusername></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="floating">Phone Number</ion-label>
+                  <ion-input type="number" #cpnumber></ion-input>
+              </ion-item>
+          </ion-list>
+      <!-- </ion-item> -->
+      <ion-item class="item-bg">
+          <ion-button class="create-button" (click)="createAccount()">Create Account</ion-button>
+      </ion-item>
+    </ion-card>
+    <!-- <div padding>
         <ion-button class="button-input" (click)="createAccount()">Create Account</ion-button>
-    </div>
+    </div> -->
 </ion-content>

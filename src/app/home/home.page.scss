@@ -17,6 +17,8 @@ ion-content {
 .card-bg {
     --background: rgba(255,255,255,0.7);
     font-family: 'Raleway', sans-serif;
+    height: 35vh;
+    padding-top: 7vh;
 }
 ion-card {
     top: 25vh;
@@ -24,7 +26,7 @@ ion-card {
 .title-name {
     font-family: 'Major Mono Display', monospace;
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
     padding: 25px 25px;
     font-weight: bolder;
     // --color: #636363;
@@ -45,9 +47,12 @@ ion-card {
 ion-button {
     --background: transparent;
     --box-shadow: none;
-    --color: black;
+    --color: white;
 }
 .connect-button {
     display: block;
     margin: auto;
+}
+.item-bg {
+    --background: #3963e2;
 }

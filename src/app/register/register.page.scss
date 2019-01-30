@@ -1,47 +1,71 @@
-:root {
-     --ion-font-family: sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
     ion-content {
-        // background-image: url("../../assets/imgs/bg-5.jpg");
-        // height: 100vh;
-        // background-repeat: no-repeat;
-        // background-size: cover;
-        // background-position: center;
-        // // padding-bottom: 50px;
-        // background-attachment: fixed;
-        // position: relative;
-        --background: #e9ebee;
-        ion-list {
-            position: relative;
-            top: 20vh;
-            background: #f5f6f7;
-            border-radius: 5px;
-            --color: black;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-            // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
-            ion-item {
-                border-radius: 5px;
-                --background: #f5f6f7;
-                ion-input {
-                    text-align: center;
-                }
-
-            }
-        }
-        .button-input {
-            position: relative;
-            top: 25vh;
-            --background: rgba(173, 63, 63, 0.9);
-            --ion-color: white;
-            font-weight: lighter;
-            display: block;
-
-        }
+        font-family: 'Raleway', sans-serif;
+        --background: #fff url("./../../assets/imgs/bg-5.jpg") no-repeat center center / cover;
+        // --background: #e9ebee;
+        // ion-list {
+        //     position: relative;
+        //     top: 20vh;
+        //     background: #f5f6f7;
+        //     border-radius: 5px;
+        //     --color: black;
+        //     box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+        //     // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
+        //     ion-item {
+        //         border-radius: 5px;
+        //         --background: #f5f6f7;
+        //         ion-input {
+        //             text-align: center;
+        //         }
+        //
+        //     }
+        // }
     }
-    ion-toolbar {
-        --background: #f5f6f7;
-        --color: black;
+    ion-button {
+        --background: transparent;
+        --box-shadow: none;
+        --color: white;
+    }
+    .item-bg {
+        --background: #da6363;
+    }
+    .connect-button {
+        display: block;
+        margin: auto;
+    }
+    .subtitle-name {
+        font-style: italic;
+        padding: 15px;
         text-align: center;
-        border-radius: 2px 2px 0 0;
-        border-bottom: 1px solid #dddfe2;
+    }
+    .card-bg {
+        --background: rgba(255,255,255,0.7);
+        font-family: 'Raleway', sans-serif;
+
+    }
+    .title-name {
+        text-align: center;
+        font-size: 35px;
+        padding: 15px 15px;
+        font-weight: bolder;
+        // --color: #636363;
+        --color: white;
+        text-shadow: 2px 2px 4px #000;
+    }
+    .create-button {
+        display: block;
+        margin: auto;
+    }
+    .lines {
+        border-bottom: 1px solid gray;
+        width: 22vh;
+        display: block;
+        margin: auto;
+    }
+    ion-list {
+        padding: 0;
+    }
+    ion-card {
+        top: 7vh;
     }
