@@ -1,11 +1,12 @@
 ion-toolbar {
     --background: #f5f6f7;
     --color: black;
-    border-radius: 2px 2px 0 0;
-    border-bottom: 1px solid #dddfe2;
 }
 ion-content {
-    --background: #e9ebee;
+    --background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+    // --background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 ion-button{
   --box-shadow:none;
@@ -44,6 +45,7 @@ ion-list {
     position: relative;
     // top: 20vh;
     background: #f5f6f7;
+    padding: 0;
     border-radius: 5px;
     --color: black;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
@@ -57,6 +59,34 @@ ion-list {
         // }
 
     }
+}
+:root .scroll-y {
+    padding: 25px 0;
+    --padding: 25px 0;
+}
+/deep/ .inner-scroll {
+    --padding: 25px 0;
+    padding: 25px 0;
+}
+/deep/ .scroll-y {
+    padding: 25px 0;
+    --padding: 25px 0;
+}
+.icon-holder {
+    border: 1px solid gray;
+    height: 125px;
+    width: 125px;
+    display: block;
+    margin: auto;
+    border-radius: 100vh;
+}
+.image-holder {
+    // border: 1px solid gray;
+    height: 125px;
+    width: 125px;
+    display: block;
+    margin: auto;
+    border-radius: 100vh;
 }
 // .item-native {
 //     display: none;

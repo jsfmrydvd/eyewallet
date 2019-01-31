@@ -7,27 +7,30 @@
 
 <ion-content padding>
     <div padding>
-        <ion-icon name="contact" class="user-icon"></ion-icon>
+            <!-- <ion-icon src="./../../assets/imgs/icon.jpg" class="user-icon"></ion-icon> -->
+            <ion-avatar class="image-holder">
+                <ion-img class="icon-holder" src="./../../assets/imgs/icon.jpg"></ion-img>
+            </ion-avatar>
             <h4>{{username}}</h4>
     </div>
-<ion-list>
-    <ion-item>
-        <ion-label position="fixed">{{username}}</ion-label>
-        <!-- <ion-input type="text" #username></ion-input> -->
-    </ion-item>
-    <ion-item>
-        <ion-label position="fixed">{{number}}</ion-label>
-        <!-- <ion-input type="number" #number></ion-input> -->
-    </ion-item>
-    <ion-item>
-        <ion-label position="fixed">{{cpusername}}</ion-label>
-        <!-- <ion-input type="text" #cpusername></ion-input> -->
-    </ion-item>
-    <ion-item>
-        <ion-label position="fixed">{{cpnumber}}</ion-label>
-        <!-- <ion-input type="number" #cpnumber></ion-input> -->
-    </ion-item>
-</ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label position="fixed">Name</ion-label>
+            <ion-input disabled type="text">{{username}}</ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">Phone Number</ion-label>
+            <ion-input disabled type="number">{{number}}</ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">Contact Person</ion-label>
+            <ion-input disabled type="text">{{cpusername}}</ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="fixed">Contact Person Phone Number</ion-label>
+            <ion-input disabled type="number">{{cpnumber}}</ion-input>
+        </ion-item>
+    </ion-list>
 <!-- <ion-button class="button-input" (click)="getData()">Create Account</ion-button> -->
 
 </ion-content>

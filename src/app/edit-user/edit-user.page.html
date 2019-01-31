@@ -10,25 +10,28 @@
 
 <ion-content padding>
     <div padding>
-        <ion-icon name="contact" class="user-icon"></ion-icon>
-            <h4>{{username}}</h4>
+        <ion-avatar class="image-holder">
+            <ion-img class="icon-holder" src="./../../assets/imgs/icon.jpg"></ion-img>
+        </ion-avatar>
+            <h4>{{uname}}</h4>
     </div>
 <ion-list>
     <ion-item>
-        <ion-label position="fixed">Username</ion-label>
-        <ion-input type="text" #username></ion-input>
+
+        <ion-label position="floating">Name</ion-label>
+        <ion-input type="text" #username>{{uname}}</ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="fixed">Phone Number</ion-label>
-        <ion-input type="number" #number></ion-input>
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input type="number" #number>{{numb}}</ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="fixed">Contact Person</ion-label>
-        <ion-input type="text" #cpusername></ion-input>
+        <ion-label position="floating">Contact Person</ion-label>
+        <ion-input type="text" #cpusername>{{cpuname}}</ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="fixed">Contact Phone Number</ion-label>
-        <ion-input type="number" #cpnumber></ion-input>
+        <ion-label position="floating">Contact Person Phone Number</ion-label>
+        <ion-input type="number" #cpnumber>{{cpnumb}}</ion-input>
     </ion-item>
 </ion-list>
 <!-- <ion-button class="button-input" (click)="getData()">Create Account</ion-button> -->

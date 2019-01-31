@@ -14,56 +14,82 @@ export class EditUserPage implements OnInit {
     @ViewChild('cpnumber') cpnumber;
     @ViewChild('cpusername') cpusername;
 
+    uname: any;
+    cpuname: any;
+    numb: any;
+    cpnumb: any;
+
   constructor(private nativeStorage: NativeStorage,
         private router: Router,
         public alertController: AlertController) { }
 
   ngOnInit() {
+      this.nativeStorage.getItem('username').then((data) => {
+          this.uname = data;
+          this.nativeStorage.getItem('number').then((num) => {
+              this.numb = num;
+                console.log(num);
+              this.nativeStorage.getItem('cpusername').then((cpun) => {
+                  this.cpuname = cpun;
+                  this.nativeStorage.getItem('cpnumber').then((cpnum) => {
+                      this.cpnumb = cpnum;
+                  }).catch((err) => {
+                      alert(JSON.stringify(err));
+                  })
+              }).catch((err) => {
+                  alert(JSON.stringify(err));
+              });
+          }).catch((err) => {
+              alert(JSON.stringify(err));
+          });
+      }).catch((err) => {
+          alert(err);
+      });
   }
   goBack() {
       this.router.navigate(['/user'])
   }
   async saveUser() {
-       // this.nativeStorage.setItem('username', this.username.value).then(() => {
-       //     console.log('Stored item!' + this.username.value)
-       // }).catch((err) => {
-       //     // alert(JSON.stringify(err));
-       // });
-       // this.nativeStorage.setItem('number', this.number.value).then(() => {
-       //     console.log('Stored item!' + this.number.value)
-       // }).catch((err) => {
-       //     // alert(JSON.stringify(err));
-       // });
-       // this.nativeStorage.setItem('cpusername',  this.cpusername.value).then(() => {
-       //     console.log('Stored item!' + this. cpusername.value)
-       // }).catch((err) => {
-       //     // alert(err);
-       // });
-       // this.nativeStorage.setItem('cpnumber',  this.cpnumber.value).then(() => {
-       //     console.log('Stored item!' + this.cpnumber.value)
-       // }).catch((err) => {
-       //     // alert(err);
-       // });
-       // if(this.username.value != "" && this.number.value != "" &&
-       // this.cpusername.value != "" && this.cpnumber.value != "") {
-       //     const alert = await this.alertController.create({
-       //          header: 'Success',
-       //          // subHeader: 'Subtitle',
-       //          message: 'Details updated.',
-       //          buttons: ['OK']
-       //
-       //        });
-       //        await alert.present();
+       this.nativeStorage.setItem('username', this.username.value).then(() => {
+           console.log('Stored item!' + this.username.value)
+       }).catch((err) => {
+           // alert(JSON.stringify(err));
+       });
+       this.nativeStorage.setItem('number', this.number.value).then(() => {
+           console.log('Stored item!' + this.number.value)
+       }).catch((err) => {
+           // alert(JSON.stringify(err));
+       });
+       this.nativeStorage.setItem('cpusername',  this.cpusername.value).then(() => {
+           console.log('Stored item!' + this. cpusername.value)
+       }).catch((err) => {
+           // alert(err);
+       });
+       this.nativeStorage.setItem('cpnumber',  this.cpnumber.value).then(() => {
+           console.log('Stored item!' + this.cpnumber.value)
+       }).catch((err) => {
+           // alert(err);
+       });
+       if(this.username.value != "" && this.number.value != "" &&
+       this.cpusername.value != "" && this.cpnumber.value != "") {
+           const alert = await this.alertController.create({
+                header: 'Success',
+                // subHeader: 'Subtitle',
+                message: 'Details updated.',
+                buttons: ['OK']
+
+              });
+              await alert.present();
               this.router.navigate(['/main'])
-       // } else {
-       //     const alert = await this.alertController.create({
-       //          header: 'Error',
-       //          // subHeader: 'Subtitle',
-       //          message: 'Please fill out the empty fields.',
-       //          buttons: ['OK']
-       //        });
-       //        await alert.present();
-       // }
+       } else {
+           const alert = await this.alertController.create({
+                header: 'Error',
+                // subHeader: 'Subtitle',
+                message: 'Please fill out the empty fields.',
+                buttons: ['OK']
+              });
+              await alert.present();
+       }
 
    }
 }

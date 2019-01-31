@@ -2,18 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 .title {
     text-align: center;
-    font-family: 'Major Mono Display', monospace;
-    font-weight: 600;
 }
 ion-toolbar {
-    --background: white;
+    --background: #f5f6f7;
     --color: black;
-    border-radius: 2px 2px 0 0;
+    // border-radius: 2px 2px 0 0;
     // border-bottom: 1px solid #dddfe2;
-    --min-height: 40px;
+    // --min-height: 45px;
 }
 ion-content {
-    // background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-    --background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+    // --background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
-// font-family: 'Raleway', sans-serif;

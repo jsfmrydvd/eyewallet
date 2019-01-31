@@ -9,36 +9,37 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for blue
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-    username: string;
-    cpusername: string;
-    number: number;
-    cpnumber: number;
+    username: any;
+    cpusername: any;
+    number: any;
+    cpnumber: any;
   constructor(private nativeStorage: NativeStorage,
         private router: Router,
         private bluetoothSerial: BluetoothSerial) { }
 
   ngOnInit() {
       console.log("user page loaded!");
-      // this.nativeStorage.getItem('username').then((data) => {
-      //     this.username = data;
-      //     this.nativeStorage.getItem('number').then((num) => {
-      //         this.number = num;
-      //         this.nativeStorage.getItem('cpusername').then((cpuname) => {
-      //             this.cpusername = cpuname;
-      //             this.nativeStorage.getItem('cpnumber').then((cpnum) => {
-      //                 this.cpnumber = cpnum;
-      //             }).catch((err) => {
-      //                 alert(JSON.stringify(err));
-      //             })
-      //         }).catch((err) => {
-      //             alert(JSON.stringify(err));
-      //         });
-      //     }).catch((err) => {
-      //         alert(JSON.stringify(err));
-      //     });
-      // }).catch((err) => {
-      //     alert(err);
-      // });
+      this.nativeStorage.getItem('username').then((data) => {
+          this.username = data;
+          this.nativeStorage.getItem('number').then((num) => {
+              this.number = num;
+                console.log(num);
+              this.nativeStorage.getItem('cpusername').then((cpuname) => {
+                  this.cpusername = cpuname;
+                  this.nativeStorage.getItem('cpnumber').then((cpnum) => {
+                      this.cpnumber = cpnum;
+                  }).catch((err) => {
+                      alert(JSON.stringify(err));
+                  })
+              }).catch((err) => {
+                  alert(JSON.stringify(err));
+              });
+          }).catch((err) => {
+              alert(JSON.stringify(err));
+          });
+      }).catch((err) => {
+          alert(err);
+      });
   }
   getData() {
       this.nativeStorage.getItem('username').then((data) => {
