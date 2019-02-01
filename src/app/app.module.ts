@@ -12,6 +12,12 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for blue
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';//for permissions
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
+// import { SMS } from '@ionic-native/sms/ngx';
+declare var sms: any;//SMS plugin
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +30,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     AndroidPermissions,
     NativeStorage,
     Geolocation,
+    LocalNotifications,
+    NativeAudio,
+    BackgroundMode,
+    // SMS,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -76,14 +76,16 @@ ion-list {
     display: block;
     margin: auto;
     border-radius: 100vh;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
 }
 .image-holder {
-    border: 1px solid gray;
+    // border: 1px solid gray;
     height: 125px;
     width: 125px;
     display: block;
     margin: auto;
     border-radius: 100vh;
+    opacity: 0.8;
 }
 // .item-native {
 //     display: none;
