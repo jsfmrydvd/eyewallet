@@ -21,6 +21,12 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
       console.log("register page loaded!")
+      if(this.nativeStorage.keys() == null) {
+          this.router.navigate(['/register'])
+      } else {
+          this.router.navigate(['/main'])
+          console.log('Success' + this.nativeStorage.keys());
+      }
   }
  async createAccount() {
       this.nativeStorage.setItem('username', this.username.value).then(() => {
