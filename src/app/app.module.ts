@@ -17,6 +17,7 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 // import { SMS } from '@ionic-native/sms/ngx';
 declare var sms: any;//SMS plugin
+import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ declare var sms: any;//SMS plugin
     LocalNotifications,
     NativeAudio,
     BackgroundMode,
-    // SMS,
+    BluetoothLE,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -24,27 +24,27 @@ export class EditUserPage implements OnInit {
         public alertController: AlertController) { }
 
   ngOnInit() {
-      // this.nativeStorage.getItem('username').then((data) => {
-      //     this.uname = data;
-      //     this.nativeStorage.getItem('number').then((num) => {
-      //         this.numb = num;
-      //           console.log(num);
-      //         this.nativeStorage.getItem('cpusername').then((cpun) => {
-      //             this.cpuname = cpun;
-      //             this.nativeStorage.getItem('cpnumber').then((cpnum) => {
-      //                 this.cpnumb = cpnum;
-      //             }).catch((err) => {
-      //                 alert(JSON.stringify(err));
-      //             })
-      //         }).catch((err) => {
-      //             alert(JSON.stringify(err));
-      //         });
-      //     }).catch((err) => {
-      //         alert(JSON.stringify(err));
-      //     });
-      // }).catch((err) => {
-      //     alert(err);
-      // });
+      this.nativeStorage.getItem('username').then((data) => {
+          this.uname = data;
+          this.nativeStorage.getItem('number').then((num) => {
+              this.numb = num;
+                console.log(num);
+              this.nativeStorage.getItem('cpusername').then((cpun) => {
+                  this.cpuname = cpun;
+                  this.nativeStorage.getItem('cpnumber').then((cpnum) => {
+                      this.cpnumb = cpnum;
+                  }).catch((err) => {
+                      alert(JSON.stringify(err));
+                  })
+              }).catch((err) => {
+                  alert(JSON.stringify(err));
+              });
+          }).catch((err) => {
+              alert(JSON.stringify(err));
+          });
+      }).catch((err) => {
+          alert(err);
+      });
   }
   goBack() {
       this.router.navigate(['/user'])

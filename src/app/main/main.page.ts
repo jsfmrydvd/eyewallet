@@ -33,15 +33,19 @@ export class MainPage implements OnInit {
 
   ngOnInit() {
       console.log("main page loaded!");
-      if(this.nativeStorage.keys() == null) {
-          this.router.navigate(['/register']);
-      } else {
-          this.router.navigate(['/main']);
-      }
+      // this.bluetoothSerial.isEnabled().then((success) => {
+      //     this.confirmUser();
+      // }).catch((flse) => {
+      //     this.router.navigate(['/home'])
+      // });
       //when the app is opened
       this.plt.ready().then((rdy) => {
           this.backgroundMode.on('activate').subscribe(() => {
               //task loop interval of 3 secs
+
+              //save to preload complex
+
+
               this.backgroundMode.disableWebViewOptimizations();
               this.task = setInterval(() => {
                   this.reInterval();
@@ -80,11 +84,19 @@ export class MainPage implements OnInit {
            this.backgroundMode.enable();
       });
   }
+  confirmUser() {
+      if(this.nativeStorage.keys() == null) {
+          this.router.navigate(['/register'])
+      } else {
+          this.router.navigate(['/main'])
+          console.log('Success' + this.nativeStorage.keys());
+      }
+  }
   reInterval() {
       //if the bluetooth is enabled
-      this.bluetoothSerial.isEnabled().then((success) => {
+      this.bluetoothSerial.isConnected().then((success) => {
           //if the bluetooth is enabled it will not do anything!
-
+        this.showNotification();
           //if the bluetooth got disabled it will send a notification automatically
       }).catch((flse) => {
           //condition notificationAlreadyReceived
@@ -110,11 +122,16 @@ export class MainPage implements OnInit {
       });
   };
   playAudio() {
-      this.nativeAudio.preloadSimple('ringtone', 'assets/sounds/ring.wav').then((success) => {
-          this.nativeAudio.play('ringtone');
-      }).catch((err) => {
-          alert(JSON.stringify(err));
-      });
+      // this.nativeAudio.preloadComplex('ringtone', 'assets/sounds/ring.wav').then(() => {
+      //     this.nativeAudio.loop('ringtone');
+      // });
+      // this.nativeAudio.preloadSimple('ringtone', 'assets/sounds/ring.wav').then((success) => {
+      //     this.nativeAudio.play('ringtone');
+      // }).catch((err) => {
+      //     alert(JSON.stringify(err));
+      // });
+      this.nativeAudio.loop('ringtone');
+
       this.player = setTimeout(() => {
           this.nativeAudio.stop('ringtone');
           this.nativeAudio.unload('ringtone');
@@ -147,7 +164,7 @@ export class MainPage implements OnInit {
             { id: 'disable',  title: 'Disable' }
         ]
       });
-      this.playAudio();
+      // this.playAudio();
       this.notificationAlreadyReceived = true;
   }
   openUser() {

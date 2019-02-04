@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for bluetooth serial
+
 
 @Component({
   selector: 'app-register',
@@ -17,16 +19,24 @@ export class RegisterPage implements OnInit {
 
   constructor(private nativeStorage: NativeStorage,
             public alertController: AlertController,
-            private router: Router) { }
+            private router: Router,
+            private bluetoothSerial: BluetoothSerial) { }
 
   ngOnInit() {
       console.log("register page loaded!")
-      if(this.nativeStorage.keys() == null) {
+      this.bluetoothSerial.isEnabled().then((success) => {
+          this.confirmUser();
+      }).catch((flse) => {
+          this.router.navigate(['/home'])
+      });
+  }
+  confirmUser() {
+      // if(this.nativeStorage.keys() == null) {
           this.router.navigate(['/register'])
-      } else {
-          this.router.navigate(['/main'])
-          console.log('Success' + this.nativeStorage.keys());
-      }
+      // } else {
+      //     this.router.navigate(['/main'])
+      //     console.log('Success' + this.nativeStorage.keys());
+      // }
   }
  async createAccount() {
       this.nativeStorage.setItem('username', this.username.value).then(() => {
