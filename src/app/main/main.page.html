@@ -1,10 +1,10 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title class="title">Home</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 <ion-content padding>
-    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button color="dark">
         <ion-icon name="arrow-dropup"></ion-icon>
       </ion-fab-button>
@@ -14,5 +14,27 @@
         <ion-fab-button ><ion-icon name="settings"></ion-icon></ion-fab-button>
         <ion-fab-button (click)="disconnect()"><ion-icon name="log-out"></ion-icon></ion-fab-button>
       </ion-fab-list>
-    </ion-fab>
+    </ion-fab> -->
+    <!-- buttons here -->
+    <ion-card>
+        <ion-card-header class="card-bg">
+            <ion-card-title class="title-name">home</ion-card-title>
+            <p class="lines"></p>
+            <ion-card-subtitle class="subtitle-name">An app for the visually impaired</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item class="item-bg">
+            <ion-button class="ring-button"><ion-icon name="alarm"></ion-icon>Ring Wallet</ion-button>
+        </ion-item>
+        <ion-item class="item-bg-1">
+            <ion-button class="userpage-button" (click)="openUser()"><ion-icon name="contact"></ion-icon>User Page</ion-button>
+        </ion-item>
+        <ion-item class="item-bg-2">
+            <ion-button class="disconnect-button" (click)="disconnect()"><ion-icon name="log-out"></ion-icon>Disconnect</ion-button>
+        </ion-item>
+    </ion-card>
+    <!-- <ion-footer>
+      <ion-toolbar>
+        <ion-title class="title">Home</ion-title>
+      </ion-toolbar>
+    </ion-footer> -->
 </ion-content>

@@ -7,30 +7,27 @@
 
 <ion-content padding>
     <div padding>
-            <!-- <ion-icon src="./../../assets/imgs/icon.jpg" class="user-icon"></ion-icon> -->
-            <ion-avatar class="image-holder">
-                <ion-img class="icon-holder" src="./../../assets/imgs/icon.jpg"></ion-img>
-            </ion-avatar>
-            <h4>{{username}}</h4>
+        <ion-avatar class="image-holder">
+            <ion-img class="icon-holder" src="./../../assets/imgs/user.jpeg"></ion-img>
+        </ion-avatar>
     </div>
     <ion-list>
         <ion-item>
-            <ion-label position="fixed">Name</ion-label>
-            <ion-input disabled type="text">{{username}}</ion-input>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input disabled type="text" [(ngModel)]="username"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label position="fixed">Phone Number</ion-label>
-            <ion-input disabled type="number">{{number}}</ion-input>
+            <ion-label position="stacked">Phone Number</ion-label>
+            <ion-input disabled type="number" [(ngModel)]="number"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label position="fixed">Contact Person</ion-label>
-            <ion-input disabled type="text">{{cpusername}}</ion-input>
+            <ion-label position="stacked">Contact Person</ion-label>
+            <ion-input disabled type="text" [(ngModel)]="cpusername"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label position="fixed">Contact Person Phone Number</ion-label>
-            <ion-input disabled type="number">{{cpnumber}}</ion-input>
+            <ion-label position="stacked">Contact Person Phone Number</ion-label>
+            <ion-input disabled type="number" [(ngModel)]="cpnumber"></ion-input>
         </ion-item>
     </ion-list>
-<!-- <ion-button class="button-input" (click)="getData()">Create Account</ion-button> -->
-
+    <ion-button class="delete-button" (click)="deleteUser()">Delete Account</ion-button>
 </ion-content>

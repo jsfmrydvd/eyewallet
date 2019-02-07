@@ -4,12 +4,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { LocalNotifications, ELocalNotificationTriggerUnit} from '@ionic-native/local-notifications/ngx';
-// import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { Platform} from "@ionic/angular";
-// import { BackgroundMode } from '@ionic-native/background-mode/ngx';
-// declare var sms: any;//SMS plugin
-// import { SMS } from '@ionic-native/sms/ngx';
-// import { Observable } from 'rxjs/Observable';
 import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
 
 
@@ -30,86 +25,72 @@ constructor(private bluetoothSerial: BluetoothSerial,
             {}
 
     ngOnInit() {
+            //test if the page loaded
           console.log("ionViewDidLoad on HOME PAGE");
-          // this.nativeStorage.remove('username').then((data) => {
-          //     //
-          //     this.nativeStorage.remove('number').then((num) => {
-          //         //
-          //         this.nativeStorage.remove('cpusername').then((cpuname) => {
-          //             //
-          //             this.nativeStorage.remove('cpnumber').then((cpnum) => {
-          //                 //
-          //             }).catch((err) => {
-          //                 alert(JSON.stringify(err));
-          //             })
-          //         }).catch((err) => {
-          //             alert(JSON.stringify(err));
-          //         });
-          //     }).catch((err) => {
-          //         alert(JSON.stringify(err));
-          //     });
-          // }).catch((err) => {
-          //     alert(err);
-          // });
-          // this.bluetoothSerial.isEnabled().then((success) => {
-          //     this.confirmUser();
-          // }).catch((flse) => {
-          //     this.router.navigate(['/home'])
-          // });
-          // this.confirmUser();
-          this.nativeStorage.clear();
+          this.plt.ready().then((rdy) => {
 
-      }
-
-      confirmUser() {
-          if(this.nativeStorage.keys() == null) {
-              this.router.navigate(['/register'])
-          } else {
-              this.router.navigate(['/main'])
-              console.log('Success' + this.nativeStorage.keys());
-          }
-      }
-      getNotif() {
-          this.localNotifications.schedule({
-            id: 1,
-            title: 'Bluetooth device disconnected!',
-            text: 'Is your wallet safe?',
-            sound: 'file://assets/sounds/ring.wav',
-            attachments: ['file://assets/imgs/logo.png'],
-            actions: [
-                { id: 'yes', title: 'Yes' },
-                { id: 'no',  title: 'No' },
-                { id: 'disable',  title: 'Disable' }
-            ]
+              //check if the bluetooth is already enabled
+              this.bluetoothSerial.isConnected().then((success)=> {
+                this.confirmUser();
+              }).catch((err) => {
+                  alert(err);
+              })
           });
-          // this.playAudio();
       }
-
-    getAllMac() {
+    confirmUser() {
+        this.nativeStorage.keys().then((data) => {
+            if(data.toString() === "") {
+                this.router.navigate(['/register']);
+            } else {
+                this.router.navigate(['/main'])
+            }
+        }).catch((err) => {
+            alert(err);
+        });
+    }
+    // local notification
+    getNotif() {
+      this.localNotifications.schedule({
+        id: 1,
+        title: 'Bluetooth device disconnected!',
+        text: 'Is your wallet safe?',
+        actions: [
+            { id: 'yes', title: 'Yes' },
+            { id: 'no',  title: 'No' },
+            { id: 'disable',  title: 'Disable' }
+        ]
+      });
+    }
+    gotoMain() {
+        //clear the whole storage
+        this.nativeStorage.clear();
+    }
+    // connect to the bluetooth function
+    connectToBL() {
+        this.bluetoothSerial.enable().then(() => {
+            alert('bluetooth enabled!');
+        //------------------------------
+            // this.bluetoothSerial.connect('00:18:E4:34:C7:64').subscribe((success) => {
+            //      this.router.navigate(['/register'])
+            // }, (error) => {
+            //   this.bluetoothle.disable();
+            // });
+        //------------------------------
+            this.bluetoothSerial.connect('F8:59:71:A1:E3:EC').subscribe((success) => {
+                this.confirmUser();
+            }, (error) => {
+              this.bluetoothle.disable();
+            });
+        }).catch((err) => {
+            alert(JSON.stringify(err) + 'enable');
+        })
+    }
+    //a function to get all paired devices
+    getAllConnected() {
         // this.bluetoothSerial.list().then((devices) => {
         //     devices.forEach((device) => {
         //         alert(device.id + device.name);
         //     });
         // });
-        this.bluetoothSerial.enable().then(() => {
-            alert('bluetooth enabled!');
-            // if(this.nativeStorage.keys() == null) {
-            //SERIAL
-            this.bluetoothSerial.connect('00:18:E4:34:C7:64').subscribe((success) => {
-                 this.router.navigate(['/register'])
-            }, (error) => {
-              this.bluetoothle.disable();
-            });
-                // this.router.navigate(['/register'])
-            // } else {
-            //     this.router.navigate(['/main'])
-            //     console.log('Success' + this.nativeStorage.keys());
-            //     // this.nativeStorage.keys().then((data) => {
-            //     //     console.log(data);
-            //     // });
-            // }
-        }).catch((err) => {
-            alert(JSON.stringify(err) + 'enable');
-        })
     }
 }

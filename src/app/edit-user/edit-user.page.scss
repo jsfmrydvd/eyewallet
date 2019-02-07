@@ -14,14 +14,11 @@ ion-button {
 }
 ion-content {
     --background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-    // --background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    --font-family: 'Raleway', sans-serif;
     font-family: 'Raleway', sans-serif;
 }
 .button-input-back {
     --background: transparent;
     position: relative;
-    // left: 0px;
     z-index: 1;
     --color: #40686B;
     &:hover {
@@ -52,34 +49,27 @@ h4 {
 }
 ion-list {
     position: relative;
-    // top: 20vh;
     background: #f5f6f7;
     border-radius: 5px;
     padding: 0;
     --color: black;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-    // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
     ion-item {
         border-radius: 5px;
         border-bottom: none;
         --background: #f5f6f7;
-        // ion-input {
-        //     text-align: center;
-        // }
-
     }
 }
 .icon-holder {
-    border: 1px solid gray;
+    border: 0px solid gray;
     height: 125px;
     width: 125px;
     display: block;
     margin: auto;
     border-radius: 100vh;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .7);
 }
 .image-holder {
-    // border: 1px solid gray;
     height: 125px;
     width: 125px;
     display: block;
@@ -87,8 +77,3 @@ ion-list {
     border-radius: 100vh;
     opacity: 0.8;
 }
-// .item-native {
-//     display: none;
-// }
-// #e9ebee #f5f6f7 1px solid #dddfe2
-//bradius 2px 2px 0 0

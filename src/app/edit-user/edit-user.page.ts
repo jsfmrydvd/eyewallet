@@ -74,7 +74,6 @@ export class EditUserPage implements OnInit {
        this.cpusername.value != "" && this.cpnumber.value != "") {
            const alert = await this.alertController.create({
                 header: 'Success',
-                // subHeader: 'Subtitle',
                 message: 'Details updated.',
                 buttons: ['OK']
 
@@ -84,7 +83,6 @@ export class EditUserPage implements OnInit {
        } else {
            const alert = await this.alertController.create({
                 header: 'Error',
-                // subHeader: 'Subtitle',
                 message: 'Please fill out the empty fields.',
                 buttons: ['OK']
               });

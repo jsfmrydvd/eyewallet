@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for bluetooth serial
 
 
@@ -12,75 +12,79 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for blue
 })
 export class RegisterPage implements OnInit {
 
-    @ViewChild('username') username;
-    @ViewChild('number') number;
-    @ViewChild('cpnumber') cpnumber;
-    @ViewChild('cpusername') cpusername;
+    @ViewChild('username') username; // get username from HTML
+    @ViewChild('number') number; // get number from HTML
+    @ViewChild('cpnumber') cpnumber; // get cpnumber from HTML
+    @ViewChild('cpusername') cpusername; // get cpusername from HTML
 
   constructor(private nativeStorage: NativeStorage,
             public alertController: AlertController,
             private router: Router,
-            private bluetoothSerial: BluetoothSerial) { }
+            private bluetoothSerial: BluetoothSerial,
+            public plt: Platform) { }
 
   ngOnInit() {
+      //check if the page loaded
       console.log("register page loaded!")
-      this.bluetoothSerial.isEnabled().then((success) => {
+      this.plt.ready().then((rdy) => {
+          //function to confirm if the user is already registered
           this.confirmUser();
-      }).catch((flse) => {
-          this.router.navigate(['/home'])
       });
   }
   confirmUser() {
-      // if(this.nativeStorage.keys() == null) {
-          this.router.navigate(['/register'])
-      // } else {
-      //     this.router.navigate(['/main'])
-      //     console.log('Success' + this.nativeStorage.keys());
-      // }
+      this.nativeStorage.keys().then((data) => {
+          if(data.toString() === "") {
+              this.router.navigate(['/register']);
+          } else {
+              this.router.navigate(['/main'])
+          }
+      }).catch((err) => {
+          alert(err);
+      });
   }
  async createAccount() {
+      //set the username to native storage
       this.nativeStorage.setItem('username', this.username.value).then(() => {
           console.log('Stored item!' + this.username.value)
       }).catch((err) => {
           // alert(JSON.stringify(err));
       });
+      //set the number to native storage
       this.nativeStorage.setItem('number', this.number.value).then(() => {
           console.log('Stored item!' + this.number.value)
       }).catch((err) => {
           // alert(JSON.stringify(err));
       });
+      //set the cpusername to native storage
       this.nativeStorage.setItem('cpusername',  this.cpusername.value).then(() => {
           console.log('Stored item!' + this. cpusername.value)
       }).catch((err) => {
           // alert(err);
       });
+      //set the cpnumber to native storage
       this.nativeStorage.setItem('cpnumber',  this.cpnumber.value).then(() => {
           console.log('Stored item!' + this.cpnumber.value)
       }).catch((err) => {
           // alert(err);
       });
+      //check if all the fields has a value
       if(this.username.value != "" && this.number.value != "" &&
       this.cpusername.value != "" && this.cpnumber.value != "") {
           const alert = await this.alertController.create({
                header: 'Success',
-               // subHeader: 'Subtitle',
                message: 'Account created.',
                buttons: ['OK']
 
              });
              await alert.present();
-            this.router.navigate(['/main'])
-
+            this.router.navigate(['/main']);
       } else {
           const alert = await this.alertController.create({
                header: 'Error',
-               // subHeader: 'Subtitle',
                message: 'Please fill out the empty fields.',
                buttons: ['OK']
              });
              await alert.present();
       }
-
   }
-
 }

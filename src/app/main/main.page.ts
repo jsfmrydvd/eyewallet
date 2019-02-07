@@ -6,9 +6,10 @@ import { Platform, AlertController} from "@ionic/angular";
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { LocalNotifications, ELocalNotificationTriggerUnit} from '@ionic-native/local-notifications/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for bluetooth serial
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-declare var sms: any;//SMS plugin
+import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
+declare var sms: any;
 
 
 @Component({
@@ -17,9 +18,11 @@ declare var sms: any;//SMS plugin
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-    notificationAlreadyReceived = false;
-    task: any;
-    player: any;
+    notificationAlreadyReceived = false; // when disconnected
+    notificationConnected = false; // when bluetooth is connected
+    task: any; // interval
+    player: any; // audio player
+    cpnumber: any; // number of the contact person
   constructor(private geolocation: Geolocation,
             private router: Router,
             private nativeStorage: NativeStorage,
@@ -29,74 +32,84 @@ export class MainPage implements OnInit {
             public alertController: AlertController,
             private backgroundMode: BackgroundMode,
             private bluetoothSerial: BluetoothSerial,
-            private androidPermissions: AndroidPermissions) { }
+            private androidPermissions: AndroidPermissions,
+            public bluetoothle: BluetoothLE) { }
 
   ngOnInit() {
+      //log if page is loaded
       console.log("main page loaded!");
-      // this.bluetoothSerial.isEnabled().then((success) => {
-      //     this.confirmUser();
-      // }).catch((flse) => {
-      //     this.router.navigate(['/home'])
-      // });
-      //when the app is opened
+      //get the contact person phone number in native storage
+      this.nativeStorage.getItem('cpnumber').then((cpnum) => {
+          this.cpnumber = cpnum;
+      }).catch((err) => {
+          alert(JSON.stringify(err));
+      });
+      //when the platform is ready
       this.plt.ready().then((rdy) => {
+          //check if the bluetooth is already connected
+          // this.bluetoothSerial.isConnected().then((success)=> {
+          //     this.nativeStorage.keys().then((data) => { // once true
+          //         if(data.toString() === "") {
+          //             this.router.navigate(['/register']);
+          //         } else {
+          //             this.router.navigate(['/main']);
+          //         }
+          //     }).catch((err) => {
+          //         alert(err);
+          //     });
+          // }).catch((err) => {
+          //      this.router.navigate(['/home']);
+          // })
+          //activate of background mode
           this.backgroundMode.on('activate').subscribe(() => {
-              //task loop interval of 3 secs
-
-              //save to preload complex
-
-
+              //disabled errors regarding other plugins
               this.backgroundMode.disableWebViewOptimizations();
+               //the function task() will loop every 3 seconds
               this.task = setInterval(() => {
                   this.reInterval();
               }, 3000);
           })
           //if the user clicked yes
           this.localNotifications.on('yes').subscribe(notification => {
-              //it will automatically send a text message
-             this.sendTxt(); // send text when the user clicked 'yes'
-             //the interval will be cleared
              //it wont make an interval anymore the app needs to reconnect or reopen.
              clearInterval(this.task);
              this.notificationAlreadyReceived = false;
              this.task = setInterval(this.reInterval, 10000);
-             // this.backgroundMode.moveToForeground();
-             // this.backgroundMode.disable();
-             // setInterval(() => {task}, 10000);
           });
+
+          // this.bluetoothSerial.connect('F8:59:71:A1:E3:EC').subscribe((success) => {
+          //     this.confirmUser();
+          // }, (error) => {
+          //   this.bluetoothle.disable();
+          // });
+
           //if the user clicked no
           this.localNotifications.on('no').subscribe(notification => {
+              //it will automatically send a text message
+             this.sendTxt(); // send text when the user clicked 'yes'
               //the interval will stop
-              // clearInterval(this.task);
-              //then the interval will reset every 10 seconds after that.
               this.notificationAlreadyReceived = false;
-              setInterval(() => {this.task}, 10000);
-              // this.backgroundMode.moveToBackground();
+              // setInterval(() => {this.task}, 10000);
           });
           //if the user clicked disable
           this.localNotifications.on('disable').subscribe(notification => {
               //it will permanently clear the setInterval
-              //it wont send any interval anymore
               clearInterval(this.task);
+              //it will disabled background mode
               this.backgroundMode.disable();
           });
-
+          //enables background mode
            this.backgroundMode.enable();
       });
-  }
-  confirmUser() {
-      if(this.nativeStorage.keys() == null) {
-          this.router.navigate(['/register'])
-      } else {
-          this.router.navigate(['/main'])
-          console.log('Success' + this.nativeStorage.keys());
-      }
   }
   reInterval() {
       //if the bluetooth is enabled
       this.bluetoothSerial.isConnected().then((success) => {
-          //if the bluetooth is enabled it will not do anything!
-        this.showNotification();
+          //condition notificationConnected
+          if(this.notificationConnected === false) {
+              //if the notification connected is still false it will sennd a notifiation
+              this.showNotification();
+          }
           //if the bluetooth got disabled it will send a notification automatically
       }).catch((flse) => {
           //condition notificationAlreadyReceived
@@ -108,7 +121,7 @@ export class MainPage implements OnInit {
   }
   sendTxt() {
     var messageInfo = {
-          phoneNumber: "09212562669",
+          phoneNumber: this.cpnumber.toString(),
           textMessage: "This is a test message"
       };
       this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.SEND_SMS).then(() => {
@@ -122,34 +135,18 @@ export class MainPage implements OnInit {
       });
   };
   playAudio() {
-      // this.nativeAudio.preloadComplex('ringtone', 'assets/sounds/ring.wav').then(() => {
-      //     this.nativeAudio.loop('ringtone');
-      // });
-      // this.nativeAudio.preloadSimple('ringtone', 'assets/sounds/ring.wav').then((success) => {
-      //     this.nativeAudio.play('ringtone');
-      // }).catch((err) => {
-      //     alert(JSON.stringify(err));
-      // });
       this.nativeAudio.loop('ringtone');
-
       this.player = setTimeout(() => {
           this.nativeAudio.stop('ringtone');
           this.nativeAudio.unload('ringtone');
       }, 1000 * 5);
   }
-  // getLocation() {
-  //     this.geolocation.getCurrentPosition().then((resp) => {
-  // // resp.coords.latitude
-  // // resp.coords.longitude
-  // console.log(resp.coords.latitude + ":" + resp.coords.longitude);
-  //    }).catch((error) => {
-  //      console.log('Error getting location', error);
-  //    });
-  // }
+
   showNotification () {
       this.localNotifications.schedule({
-        text: 'Test'
+        title: 'Connected!'
       });
+      this.notificationConnected = true;
   }
   getNotif() {
       this.localNotifications.schedule({
@@ -157,25 +154,23 @@ export class MainPage implements OnInit {
         title: 'Bluetooth device disconnected!',
         text: 'Is your wallet safe?',
         sound: 'file://assets/sounds/ring.wav',
-        attachments: ['file://assets/imgs/logo.png'],
         actions: [
             { id: 'yes', title: 'Yes' },
             { id: 'no',  title: 'No' },
             { id: 'disable',  title: 'Disable' }
         ]
       });
-      // this.playAudio();
       this.notificationAlreadyReceived = true;
   }
   openUser() {
       this.router.navigate(['/user'])
   }
   disconnect() {
-      // this.bluetoothSerial.disconnect().then((res) => {
-          this.router.navigate(['/home'])
-      // }).catch((err)=> {
-      //     //
-      // });
-
+      this.bluetoothSerial.disconnect().then((res) => {
+        this.bluetoothle.disable();
+        this.router.navigate(['/home'])
+      }).catch((err)=> {
+          //
+      });
   }
 }

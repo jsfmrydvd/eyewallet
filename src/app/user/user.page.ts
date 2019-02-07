@@ -54,5 +54,9 @@ export class UserPage implements OnInit {
   editUser() {
        this.router.navigate(['/edit-user'])
   }
+  deleteUser() {
+      this.nativeStorage.clear();
+      this.router.navigate(['/home']);
+  }
 
 }

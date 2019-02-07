@@ -49,15 +49,10 @@ ion-list {
     border-radius: 5px;
     --color: black;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-    // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
     ion-item {
         border-radius: 5px;
         border-bottom: none;
         --background: #f5f6f7;
-        // ion-input {
-        //     text-align: center;
-        // }
-
     }
 }
 :root .scroll-y {
@@ -73,16 +68,15 @@ ion-list {
     --padding: 25px 0;
 }
 .icon-holder {
-    border: 1px solid gray;
+    border: 0px solid gray;
     height: 125px;
     width: 125px;
     display: block;
     margin: auto;
     border-radius: 100vh;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .7);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .7);
 }
 .image-holder {
-    // border: 1px solid gray;
     height: 125px;
     width: 125px;
     display: block;
@@ -90,8 +84,9 @@ ion-list {
     border-radius: 100vh;
     opacity: 0.8;
 }
-// .item-native {
-//     display: none;
-// }
-// #e9ebee #f5f6f7 1px solid #dddfe2
-//bradius 2px 2px 0 0
+.delete-button {
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+    --background: #bf8d8d;
+}
