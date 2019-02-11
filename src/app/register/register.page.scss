@@ -1,71 +1,47 @@
+//Register Page scss
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-
     ion-content {
         font-family: 'Raleway', sans-serif;
-        --background: #fff url("./../../assets/imgs/bg-5.jpg") no-repeat center center / cover;
-        // --background: #e9ebee;
-        // ion-list {
-        //     position: relative;
-        //     top: 20vh;
-        //     background: #f5f6f7;
-        //     border-radius: 5px;
-        //     --color: black;
-        //     box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-        //     // box-shadow: 0 3px 6px 0 rgba(0,0,0,.1), 0 1px 3px 0 rgba(0,0,0,.08);
-        //     ion-item {
-        //         border-radius: 5px;
-        //         --background: #f5f6f7;
-        //         ion-input {
-        //             text-align: center;
-        //         }
-        //
-        //     }
-        // }
-    }
-    ion-button {
-        --background: transparent;
-        --box-shadow: none;
-        --color: white;
-    }
-    .item-bg {
-        --background: #da6363;
-    }
-    .connect-button {
-        display: block;
-        margin: auto;
-    }
-    .subtitle-name {
-        font-style: italic;
-        padding: 15px;
-        text-align: center;
-    }
-    .card-bg {
-        --background: rgba(255,255,255,0.7);
-        font-family: 'Raleway', sans-serif;
-
-    }
-    .title-name {
-        text-align: center;
-        font-size: 35px;
-        padding: 15px 15px;
-        font-weight: bolder;
-        // --color: #636363;
-        --color: white;
-        text-shadow: 2px 2px 4px #000;
-    }
-    .create-button {
-        display: block;
-        margin: auto;
-    }
-    .lines {
-        border-bottom: 1px solid gray;
-        width: 22vh;
-        display: block;
-        margin: auto;
-    }
-    ion-list {
-        padding: 0;
-    }
-    ion-card {
-        top: 7vh;
+        --background: #fff url("./../../assets/imgs/bg-2.jpg") no-repeat center center / cover;
+        ion-card {
+            top: 7vh;
+            .card-bg {
+                --background: rgba(255,255,255,0.7);
+                font-family: 'Raleway', sans-serif;
+                .title-name {
+                    text-align: center;
+                    font-size: 35px;
+                    padding: 15px 15px;
+                    font-weight: bolder;
+                    --color: white;
+                    text-shadow: 2px 2px 4px #000;
+                }
+                .lines {
+                    border-bottom: 1px solid gray;
+                    width: 22vh;
+                    display: block;
+                    margin: auto;
+                }
+                .subtitle-name {
+                    font-style: italic;
+                    padding: 15px;
+                    text-align: center;
+                }
+            }
+            ion-list {
+                padding: 0;
+            }
+            .item-bg {
+                --background: #bf8d8d;
+                .create-button {
+                    display: block;
+                    margin: auto;
+                }
+                ion-button {
+                    --background: transparent;
+                    --box-shadow: none;
+                    --color: white;
+                }
+            }
+        }
     }

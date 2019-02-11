@@ -1,3 +1,6 @@
+/**
+* Edit User Page
+**/
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Router } from '@angular/router';
@@ -79,7 +82,9 @@ export class EditUserPage implements OnInit {
 
               });
               await alert.present();
-              this.router.navigate(['/main'])
+              await alert.onDidDismiss().then((data) => {
+                  this.router.navigate(['/main']);
+              })
        } else {
            const alert = await this.alertController.create({
                 header: 'Error',

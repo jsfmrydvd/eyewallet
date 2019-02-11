@@ -1,3 +1,6 @@
+/**
+* Main Page
+**/
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Router } from '@angular/router';
@@ -65,6 +68,7 @@ export class MainPage implements OnInit {
               //disabled errors regarding other plugins
               this.backgroundMode.disableWebViewOptimizations();
                //the function task() will loop every 3 seconds
+              this.router.navigate(['/home']);
               this.task = setInterval(() => {
                   this.reInterval();
               }, 3000);
@@ -73,8 +77,8 @@ export class MainPage implements OnInit {
           this.localNotifications.on('yes').subscribe(notification => {
              //it wont make an interval anymore the app needs to reconnect or reopen.
              clearInterval(this.task);
-             this.notificationAlreadyReceived = false;
-             this.task = setInterval(this.reInterval, 10000);
+             this.notificationConnected = false;
+             // this.task = setInterval(this.reInterval, 10000);
           });
 
           // this.bluetoothSerial.connect('F8:59:71:A1:E3:EC').subscribe((success) => {
@@ -88,6 +92,7 @@ export class MainPage implements OnInit {
               //it will automatically send a text message
              this.sendTxt(); // send text when the user clicked 'yes'
               //the interval will stop
+              clearInterval(this.task);
               this.notificationAlreadyReceived = false;
               // setInterval(() => {this.task}, 10000);
           });

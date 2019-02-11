@@ -1,10 +1,13 @@
+/**
+* Home Page
+**/
 import { Component, OnInit } from '@angular/core';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx'; //for bluetooth serial
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Router } from '@angular/router';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { LocalNotifications, ELocalNotificationTriggerUnit} from '@ionic-native/local-notifications/ngx';
-import { Platform} from "@ionic/angular";
+import { Platform, AlertController} from "@ionic/angular";
 import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
 
 
@@ -21,7 +24,8 @@ constructor(private bluetoothSerial: BluetoothSerial,
             private nativeStorage: NativeStorage,
             private localNotifications: LocalNotifications,
             public bluetoothle: BluetoothLE,
-            public plt: Platform)
+            public plt: Platform,
+            public alertController: AlertController)
             {}
 
     ngOnInit() {
@@ -33,7 +37,7 @@ constructor(private bluetoothSerial: BluetoothSerial,
               this.bluetoothSerial.isConnected().then((success)=> {
                 this.confirmUser();
               }).catch((err) => {
-                  alert(err);
+                  // alert(err);
               })
           });
       }
@@ -68,19 +72,18 @@ constructor(private bluetoothSerial: BluetoothSerial,
     // connect to the bluetooth function
     connectToBL() {
         this.bluetoothSerial.enable().then(() => {
-            alert('bluetooth enabled!');
         //------------------------------
-            // this.bluetoothSerial.connect('00:18:E4:34:C7:64').subscribe((success) => {
-            //      this.router.navigate(['/register'])
-            // }, (error) => {
-            //   this.bluetoothle.disable();
-            // });
-        //------------------------------
-            this.bluetoothSerial.connect('F8:59:71:A1:E3:EC').subscribe((success) => {
-                this.confirmUser();
+            this.bluetoothSerial.connect('00:18:E4:34:C7:64').subscribe((success) => {
+                    this.router.navigate(['/register'])
             }, (error) => {
               this.bluetoothle.disable();
             });
+        //------------------------------
+            // this.bluetoothSerial.connect('F8:59:71:A1:E3:EC').subscribe((success) => {
+            //     this.confirmUser();
+            // }, (error) => {
+            //   this.bluetoothle.disable();
+            // });
         }).catch((err) => {
             alert(JSON.stringify(err) + 'enable');
         })

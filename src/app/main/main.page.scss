@@ -1,8 +1,6 @@
+// Main page scss
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-.title {
-    text-align: center;
-}
 ion-toolbar {
     --background: #f5f6f7;
     opacity: 0.5;
@@ -11,9 +9,9 @@ ion-toolbar {
 ion-content {
     // --background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
     // --background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    // --font-family: 'Raleway', sans-serif;
+    --font-family: 'Raleway', sans-serif;
     font-family: 'Raleway', sans-serif;
-    --background: #fff url("./../../assets/imgs/bg-5.jpg") no-repeat center center / cover;
+    --background: #fff url("./../../assets/imgs/bg-2.jpg") no-repeat center center / cover;
     ion-card {
         top: 18vh;
         .card-bg {

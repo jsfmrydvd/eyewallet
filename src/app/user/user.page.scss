@@ -1,92 +1,87 @@
+// user page scss
 ion-toolbar {
     --background: #f5f6f7;
     --color: black;
+    .button-input-back {
+        --background: transparent;
+        box-shadow: none;
+        --color: #40686B;
+        &:hover {
+            --background: transparent;
+        }
+    }
+    .button-input-edit {
+       --background: transparent;
+          position: absolute;
+          right: 0px;
+       --color: #40686B;
+       &:hover {
+           --background: transparent;
+       }
+    }
+    ion-button{
+      --box-shadow:none;
+    }
 }
+// content
 ion-content {
     --background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
-    // --background: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    --font-family: 'Raleway', sans-serif;
     font-family: 'Raleway', sans-serif;
-}
-ion-button{
-  --box-shadow:none;
-}
-.button-input-back {
-    --background: transparent;
-    // margin-left: -20px;
-    box-shadow: none;
-    --color: #40686B;
-    &:hover {
-        --background: transparent;
-    }
-}
-.button-input-edit {
-   --background: transparent;
-      position: absolute;
-      right: 0px;
-   --color: #40686B;
-   &:hover {
-       --background: transparent;
-   }
-}
-.arrow-size {
-    // font-size: 20px;
-    --color: #40686B;
-}
-.user-icon {
-    display: block;
-    margin: auto;
-    font-size: 13vh;
-}
-h4 {
-    text-align: center;
-}
-ion-list {
-    position: relative;
-    // top: 20vh;
-    background: #f5f6f7;
-    padding: 0;
-    border-radius: 5px;
-    --color: black;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-    ion-item {
+    ion-list {
+        position: relative;
+        background: #f5f6f7;
+        padding: 0;
         border-radius: 5px;
-        border-bottom: none;
-        --background: #f5f6f7;
+        --color: black;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+        ion-item {
+            border-radius: 5px;
+            border-bottom: none;
+            --background: #f5f6f7;
+        }
     }
-}
-:root .scroll-y {
-    padding: 25px 0;
-    --padding: 25px 0;
-}
-/deep/ .inner-scroll {
-    --padding: 25px 0;
-    padding: 25px 0;
-}
-/deep/ .scroll-y {
-    padding: 25px 0;
-    --padding: 25px 0;
-}
-.icon-holder {
-    border: 0px solid gray;
-    height: 125px;
-    width: 125px;
-    display: block;
-    margin: auto;
-    border-radius: 100vh;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .7);
-}
-.image-holder {
-    height: 125px;
-    width: 125px;
-    display: block;
-    margin: auto;
-    border-radius: 100vh;
-    opacity: 0.8;
-}
-.delete-button {
-    display: block;
-    margin: auto;
-    margin-top: 25px;
-    --background: #bf8d8d;
+    .image-content {
+        padding-bottom: 30px;
+        .image-holder {
+            height: 125px;
+            width: 125px;
+            display: block;
+            margin: auto;
+            border-radius: 100vh;
+            opacity: 0.8;
+            .icon-holder {
+                border: 0px solid gray;
+                height: 125px;
+                width: 125px;
+                display: block;
+                margin: auto;
+                border-radius: 100vh;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, .7);
+            }
+        }
+    }
+    .delete-button {
+        display: block;
+        margin: auto;
+        margin-top: 25px;
+        --background: #bf8d8d;
+    }
+    ion-button{
+      --box-shadow:none;
+      .arrow-size {
+          --color: #40686B;
+      }
+    }
+    :root .scroll-y {
+        padding: 25px 0;
+        --padding: 25px 0;
+    }
+    /deep/ .inner-scroll {
+        --padding: 25px 0;
+        padding: 25px 0;
+    }
+    /deep/ .scroll-y {
+        padding: 25px 0;
+        --padding: 25px 0;
+    }
 }

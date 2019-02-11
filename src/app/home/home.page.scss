@@ -1,19 +1,10 @@
+//Home page scss
 @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 ion-content {
-    --background: #fff url("./../../assets/imgs/bg-5.jpg") no-repeat center center / cover;
-    // .button-input {
-    //     --background: rgba(173, 63, 63, 0.79);
-    //         position: relative;
-    //         top: 50vh;
-    //         display: block;
-    //         --ion-margin: auto;
-    //         &:hover {
-    //             --background: rgba(173, 63, 63, 1);
-    //         }
-    // }
+    --background: #fff url("./../../assets/imgs/bg-2.jpg") no-repeat center center / cover;
     ion-card {
-        top: 25vh;
+        top: 22vh;
         .card-bg {
             --background: rgba(255,255,255,0.7);
             font-family: 'Raleway', sans-serif;
@@ -32,6 +23,7 @@ ion-content {
                 font-style: italic;
                 padding: 15px;
                 text-align: center;
+                font-weight: 600;
             }
             .lines {
                 border-bottom: 1px solid gray;
