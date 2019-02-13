@@ -37,7 +37,7 @@ ionic cordova build android
 ## Running the tests
 
 ```
-ionic serve -c
+ionic serve -c -w
 ionic cordova run browser
 ```
 
@@ -78,9 +78,9 @@ Ionic native
 
 ## Authors
 
-* **Josef David** - *Initial work* 
-* **April Arazo** - *Initial work* 
-* **Alexander Yusi** - *Initial work* 
+* **Josef David** - *Initial work*
+* **April Arazo** - *Initial work*
+* **Alexander Yusi** - *Initial work*
 
 ## License
 
@@ -88,4 +88,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* 
+*
