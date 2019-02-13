@@ -37,7 +37,7 @@ ionic cordova build android
 ## Running the tests
 
 ```
-ionic serve -c
+ionic serve -c -l
 ionic cordova run browser
 ```
 
