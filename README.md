@@ -37,7 +37,11 @@ ionic cordova build android
 ## Running the tests
 
 ```
+<<<<<<< HEAD
 ionic serve -c -w
+=======
+ionic serve -c -l
+>>>>>>> 096de030b16ade1e18e5849e0298eff90565004a
 ionic cordova run browser
 ```
 
