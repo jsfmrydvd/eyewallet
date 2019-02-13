@@ -10,7 +10,7 @@ import { LocalNotifications, ELocalNotificationTriggerUnit} from '@ionic-native/
 import { Platform, AlertController} from "@ionic/angular";
 import { BluetoothLE } from '@ionic-native/bluetooth-le/ngx';
 
-
+//
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
