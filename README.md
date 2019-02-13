@@ -14,7 +14,7 @@ You need to install:
 npm
 git
 atom
-android studio
+android studio/
 ```
 
 ### Installing
