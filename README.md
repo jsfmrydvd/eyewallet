@@ -83,8 +83,6 @@ Ionic native
 ## Authors
 
 * **Josef David** - *Initial work*
-* **April Arazo** - *Initial work*
-* **Alexander Yusi** - *Initial work*
 
 ## License
 
